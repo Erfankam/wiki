@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+  </head>
+  <body>
+    <a href="http://jquery.com/">jQuery</a>
+    <a href="http://google.com/">google</a>
+    <a href="http://yahoo.com/">yahoo</a>
+    <a href="http://aol.com/">aol</a>
+    <a href="http://msn.com/">msn</a>
+
+    <script src="jquery.js"></script>
+    <script>
+        window.onload = function() {alert("welcome boy")}      
+        $("a").hover(function(event) {
+			var response = $.ajax({
+									url: $(this).attr("href"),
+									success: function() {alert("request has been complete")},
+									error: function() {alert("request has been failed")}
+									});
+			//response.done(function(mesg) {
+			//	alert("Content of request  " + $(this).attr("href") + mesg);
+			})
+            //event.preventDefault();
+        //})
+        $(document).ready(function(){
+            //alert("New style of wiki");
+        })
+    </script>
+  </body>
+</html>
