@@ -11,22 +11,27 @@
     <a href="http://aol.com/">aol</a>
     <a href="http://msn.com/">msn</a>
 
+	<script type="text/javascript" src="http://www.ajax-cross-domain.com/cgi-bin/ACD/ACD.js?uri=(http://www.erfankam.com/)">
+	</script> <script type="text/javascript"> alert(ACD.getAllResponseHeaders); </script>
     <script src="jquery.js"></script>
     <script>
         window.onload = function() {alert("welcome boy")}      
         $("a").hover(function(event) {
+			
 			var response = $.ajax({
-									url: $(this).attr("href"),
-									success: function() {alert("request has been complete")},
-									error: function() {alert("request has been failed")}
+
+									url: "Wikipedia.html",
+									success: function() {alert("request has been complete:> ")},
+									error : function(XMLHttpRequest, textStatus, errorThrown) {
+											            alert("error " + errorThrown);}
 									});
-			//response.done(function(mesg) {
-			//	alert("Content of request  " + $(this).attr("href") + mesg);
+			response.done(function(mesg) {
+				alert("Content of request >>  "  + mesg.html);
 			})
             //event.preventDefault();
-        //})
+		})
         $(document).ready(function(){
-            //alert("New style of wiki");
+            alert("New style of wiki");
         })
     </script>
   </body>
