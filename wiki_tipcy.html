@@ -1,0 +1,41 @@
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+  </head>
+  <body>
+    <ul>
+    <li><a href="http://localhost/farkoosh/public/gateway/?q=IRT">IRT</a></li>
+    <li><a href="http://localhost/farkoosh/public/gateway/?q=IRP">IRP</a></li>
+    <li><a href="http://localhost/farkoosh/public/gateway/?q=UKT">UKT</a></li>
+    <li><a href="http://localhost/farkoosh/public/gateway/?q=GRT">GRT</a></li>
+	</ul>
+	<div id="ajax-content" style="background:red; position:fixed !important; display:inline; right:0;top:0;">L*****</div>
+	<script src="<?= $this->getCdnUrl() ?>/js/jquery/plugins/jquery.tipsy.js"></script>
+    <script>
+
+        $("a").hover(function(event) {
+            
+				$this = $(this);
+				
+				jQuery.ajax({
+					type        : 'GET',
+					cache       : false,
+					async		: false,
+					url         : $(this).attr('href'),
+					data        : '',
+					dataType    : 'text',
+					timeout     : 15000,
+					beforeSend  : function(xhr) {
+						$('#ajax-content'). html('Loading...');
+					},
+					success     : function(data){
+						data = "This is plan text";
+						$('#ajax-content').html(data);
+						return true;
+					}
+				});
+
+        });
+    </script>
+  </body>
+</html>
